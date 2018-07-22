@@ -4,7 +4,7 @@ import logging
 import bumper
 import sys, socket
 
-logging.basicConfig(level=logging.INFO,
+logging.basicConfig(level=logging.DEBUG,
                         format='%(asctime)s %(levelname)-8s %(message)s')
 
 conf_address = (socket.gethostbyname(socket.gethostname()), 8007)
