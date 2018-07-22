@@ -4,7 +4,7 @@ from http.server import HTTPServer
 from http.server import BaseHTTPRequestHandler
 from http import HTTPStatus
 from threading import Thread
-import socket, logging, ssl, json, sys
+import socket, logging, ssl, json, sys, os
 
 
 class RequestHandler(BaseHTTPRequestHandler):
@@ -21,7 +21,7 @@ class RequestHandler(BaseHTTPRequestHandler):
             if todo == 'FindBest':
                 service = json_body['service']
                 if service == 'EcoMsgNew':
-                    body = '{{"result":"ok","ip":"{}","port":5223}}'.format(socket.gethostbyname(socket.gethostname()))
+                    body = '{{"result":"ok","ip":"{}","port":5223}}'.format(os.getenv('BUMPER_IP', socket.gethostbyname(socket.gethostname())))
                 elif service == 'EcoUpdate':
                     body = '{"result":"ok","ip":"47.88.66.164","port":8005}'
             elif todo == 'loginByItToken':
